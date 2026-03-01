@@ -65,7 +65,7 @@ scheduler:
 
 notifications:
   whatsapp:
-    enabled: true
+    enabled: false
     daily_summary: true
     signal_alerts: true
     min_alert_confidence: 70

@@ -7,7 +7,3 @@ services:
     envVars:
       - key: ALPHA_VANTAGE_API_KEY
         sync: false
-      - key: WHATSAPP_PHONE
-        sync: false
-      - key: CALLMEBOT_API_KEY
-        sync: false
