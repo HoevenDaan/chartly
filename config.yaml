@@ -1,0 +1,72 @@
+app:
+  name: "StockPulse"
+  host: "127.0.0.1"
+  port: 8000
+  debug: false
+  log_level: "INFO"
+
+watchlist:
+  default_stocks:
+    - symbol: "GOOGL"
+      name: "Alphabet Inc."
+    - symbol: "NVDA"
+      name: "NVIDIA Corporation"
+    - symbol: "TSM"
+      name: "Taiwan Semiconductor"
+    - symbol: "AMZN"
+      name: "Amazon.com Inc."
+    - symbol: "MSFT"
+      name: "Microsoft Corporation"
+
+data:
+  primary_source: "yfinance"
+  fallback_source: "alphavantage"
+  history_period: "1y"
+  intraday_interval: "1h"
+  cache_ttl_minutes: 15
+  market_hours_only: false
+
+analysis:
+  indicators:
+    rsi:
+      period: 14
+      oversold: 30
+      overbought: 70
+    macd:
+      fast: 12
+      slow: 26
+      signal: 9
+    moving_averages:
+      sma_short: 20
+      sma_long: 50
+      sma_trend: 200
+      ema_short: 12
+      ema_long: 26
+    bollinger_bands:
+      period: 20
+      std_dev: 2
+    atr:
+      period: 14
+    stochastic:
+      k_period: 14
+      d_period: 3
+    volume:
+      avg_period: 20
+      spike_multiplier: 2.0
+
+  signals:
+    min_confidence: 65
+    min_agreement: 3
+
+scheduler:
+  data_refresh_minutes: 15
+  signal_check_minutes: 30
+  daily_summary_time: "19:20"
+
+notifications:
+  whatsapp:
+    enabled: true
+    daily_summary: true
+    signal_alerts: true
+    min_alert_confidence: 70
+    scanner_summary: true
